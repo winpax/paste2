@@ -1,6 +1,6 @@
 #![allow(clippy::let_underscore_untyped)]
 
-use paste::paste;
+use paste2::paste;
 use paste_test_suite::paste_test;
 
 #[test]

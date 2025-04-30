@@ -1,5 +1,5 @@
 [package]
-name = "paste"
+name = "paste2"
 version = "1.0.15"
 authors = ["David Tolnay <dtolnay@gmail.com>"]
 categories = ["development-tools", "no-std", "no-std::no-alloc"]

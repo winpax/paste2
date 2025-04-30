@@ -32,7 +32,7 @@ Within the `paste!` macro, identifiers inside `[<`...`>]` are pasted together to
 form a single identifier.
 
 ```rust
-use paste::paste;
+use paste2::paste;
 
 paste! {
     // Defines a const called `QRST`.
@@ -56,7 +56,7 @@ fields. It demonstrates how you might find it useful to bundle a paste
 invocation inside of a macro\_rules macro.
 
 ```rust
-use paste::paste;
+use paste2::paste;
 
 macro_rules! make_a_struct_and_getters {
     ($name:ident { $($field:ident),* }) => {
@@ -125,7 +125,7 @@ Within the `paste!` macro, arguments to a #\[doc ...\] attribute are implicitly
 concatenated together to form a coherent documentation string.
 
 ```rust
-use paste::paste;
+use paste2::paste;
 
 macro_rules! method_new {
     ($ret:ident) => {

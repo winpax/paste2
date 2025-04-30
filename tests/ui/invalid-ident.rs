@@ -1,4 +1,4 @@
-use paste::paste;
+use paste2::paste;
 
 paste! {
     fn [<0 f>]() {}

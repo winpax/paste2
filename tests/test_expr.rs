@@ -1,6 +1,6 @@
 #![allow(clippy::let_underscore_untyped)]
 
-use paste::paste;
+use paste2::paste;
 
 #[test]
 fn test_shared_hygiene() {
@@ -109,7 +109,7 @@ fn test_env_present() {
     paste! {
         struct [<Lib env!("CARGO_PKG_NAME")>];
 
-        let _ = Libpaste;
+        let _ = Libpaste2;
     }
 }
 
@@ -164,7 +164,7 @@ fn test_env_to_lower() {
     paste! {
         struct [<Lib env!("CARGO_PKG_NAME"):lower>];
 
-        let _ = Libpaste;
+        let _ = Libpaste2;
     }
 }
 
@@ -173,7 +173,7 @@ fn test_env_to_upper() {
     paste! {
         const [<LIB env!("CARGO_PKG_NAME"):upper>]: &str = "libpaste";
 
-        let _ = LIBPASTE;
+        let _ = LIBPASTE2;
     }
 }
 
@@ -182,7 +182,7 @@ fn test_env_to_snake() {
     paste! {
         const [<LIB env!("CARGO_PKG_NAME"):snake:upper>]: &str = "libpaste";
 
-        let _ = LIBPASTE;
+        let _ = LIBPASTE2;
     }
 }
 
@@ -192,7 +192,7 @@ fn test_env_to_camel() {
         #[allow(non_upper_case_globals)]
         const [<LIB env!("CARGO_PKG_NAME"):camel>]: &str = "libpaste";
 
-        let _ = LIBPaste;
+        let _ = LIBPaste2;
     }
 }
 
@@ -202,7 +202,7 @@ mod test_x86_feature_literal {
     #[cfg(any(target_arch = "x86", target_arch = "x86_64"))]
     macro_rules! my_is_x86_feature_detected {
         ($feat:literal) => {
-            use paste::paste;
+            use paste2::paste;
 
             paste! {
                 #[test]
@@ -229,7 +229,7 @@ mod test_x86_feature_literal {
 mod test_local_setter {
     // https://github.com/dtolnay/paste/issues/7
 
-    use paste::paste;
+    use paste2::paste;
 
     #[derive(Default)]
     struct Test {
