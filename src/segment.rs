@@ -225,7 +225,7 @@ pub(crate) fn paste(segments: &[Segment]) -> Result<String> {
                             if ch != '_' {
                                 match prev {
                                     Previous::First => acc.push(ch),
-                                    Previous::Letter(prev) if prev == '_' => {
+                                    Previous::Letter('_') => {
                                         for chu in ch.to_uppercase() {
                                             acc.push(chu);
                                         }
