@@ -213,6 +213,35 @@ pub(crate) fn paste(segments: &[Segment]) -> Result<String> {
                         }
                         evaluated.push(acc);
                     }
+                    "lower_camel" => {
+                        enum Previous {
+                            First,
+                            Letter(char),
+                        }
+
+                        let mut acc = String::new();
+                        let mut prev = Previous::First;
+                        for ch in last.chars() {
+                            if ch != '_' {
+                                match prev {
+                                    Previous::First => acc.push(ch),
+                                    Previous::Letter(prev) if prev == '_' => {
+                                        for chu in ch.to_uppercase() {
+                                            acc.push(chu);
+                                        }
+                                    }
+                                    Previous::Letter(prev) if prev.is_uppercase() => {
+                                        for chl in ch.to_lowercase() {
+                                            acc.push(chl);
+                                        }
+                                    }
+                                    Previous::Letter(_) => acc.push(ch),
+                                }
+                            }
+                            prev = Previous::Letter(ch);
+                        }
+                        evaluated.push(acc);
+                    }
                     _ => {
                         return Err(Error::new2(
                             colon.span,
